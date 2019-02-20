@@ -30,6 +30,8 @@ class BoardCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: BoardCollectionViewCell.description(), for: indexPath)
+        
+        cell.frame.size = CGSize(width: 50, height: 50)
         return cell
     }
 

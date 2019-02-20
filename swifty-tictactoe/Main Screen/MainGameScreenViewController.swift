@@ -19,10 +19,13 @@ class MainGameScreenViewController: UIViewController {
     func loadElements() {
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-        flowLayout.scrollDirection = .horizontal
+            flowLayout.scrollDirection = .horizontal
 
-        let board = BoardCollectionView(frame: CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height), collectionViewLayout: flowLayout)
+        let board = BoardCollectionView(frame: CGRect(x: self.view.frame.minX,
+                                                      y: self.view.frame.minY,
+                                                      width: self.view.frame.width,
+                                                      height: self.view.frame.height),
+                                        collectionViewLayout: flowLayout)
         
         self.view.addSubview(board)
         
