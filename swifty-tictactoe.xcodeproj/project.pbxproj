@@ -13,6 +13,8 @@
 		51EBA700221DF12100A3F951 /* swifty_tictactoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA6FF221DF12100A3F951 /* swifty_tictactoeTests.swift */; };
 		51EBA70B221DF12100A3F951 /* swifty_tictactoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA70A221DF12100A3F951 /* swifty_tictactoeUITests.swift */; };
 		51EBA719221DF27D00A3F951 /* MainGameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA718221DF27D00A3F951 /* MainGameScreenViewController.swift */; };
+		51EBA71E221DFFFF00A3F951 /* BoardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA71D221DFFFF00A3F951 /* BoardCollectionView.swift */; };
+		51EBA720221E013000A3F951 /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA71F221E013000A3F951 /* BoardCollectionViewCell.swift */; };
 		7BF8FF1A30F8F8B8E8C10BD0 /* Pods_swifty_tictactoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EA621BEC0199A899D93C24 /* Pods_swifty_tictactoe.framework */; };
 		9354634E9099B599241A80AD /* Pods_swifty_tictactoeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59E8A2C82D445C755725504 /* Pods_swifty_tictactoeUITests.framework */; };
 		DC8057DBF9788D56CC050524 /* Pods_swifty_tictactoeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF9F79B26A6CB9C23247DC /* Pods_swifty_tictactoeTests.framework */; };
@@ -50,6 +52,8 @@
 		51EBA70A221DF12100A3F951 /* swifty_tictactoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swifty_tictactoeUITests.swift; sourceTree = "<group>"; };
 		51EBA70C221DF12100A3F951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51EBA718221DF27D00A3F951 /* MainGameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameScreenViewController.swift; sourceTree = "<group>"; };
+		51EBA71D221DFFFF00A3F951 /* BoardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionView.swift; sourceTree = "<group>"; };
+		51EBA71F221E013000A3F951 /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		6AFF9F79B26A6CB9C23247DC /* Pods_swifty_tictactoeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swifty_tictactoeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E5CB4A6F04E9A540F0AD79B /* Pods-swifty-tictactoe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swifty-tictactoe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swifty-tictactoe/Pods-swifty-tictactoe.debug.xcconfig"; sourceTree = "<group>"; };
 		ACB1AB4B44F7F8A089ADAC61 /* Pods-swifty-tictactoeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swifty-tictactoeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-swifty-tictactoeUITests/Pods-swifty-tictactoeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,11 +116,11 @@
 		51EBA6E6221DF12000A3F951 /* swifty-tictactoe */ = {
 			isa = PBXGroup;
 			children = (
+				51EBA71A221DFF9F00A3F951 /* Main Screen */,
 				51EBA6E7221DF12000A3F951 /* AppDelegate.swift */,
 				51EBA6F1221DF12100A3F951 /* Assets.xcassets */,
 				51EBA6F6221DF12100A3F951 /* Info.plist */,
 				51EBA6EE221DF12000A3F951 /* swifty_tictactoe.xcdatamodeld */,
-				51EBA718221DF27D00A3F951 /* MainGameScreenViewController.swift */,
 			);
 			path = "swifty-tictactoe";
 			sourceTree = "<group>";
@@ -137,6 +141,16 @@
 				51EBA70C221DF12100A3F951 /* Info.plist */,
 			);
 			path = "swifty-tictactoeUITests";
+			sourceTree = "<group>";
+		};
+		51EBA71A221DFF9F00A3F951 /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				51EBA718221DF27D00A3F951 /* MainGameScreenViewController.swift */,
+				51EBA71D221DFFFF00A3F951 /* BoardCollectionView.swift */,
+				51EBA71F221E013000A3F951 /* BoardCollectionViewCell.swift */,
+			);
+			path = "Main Screen";
 			sourceTree = "<group>";
 		};
 		ABABB1ACCFBD7EA10CA0A0D8 /* Frameworks */ = {
@@ -365,7 +379,9 @@
 			files = (
 				51EBA6F0221DF12000A3F951 /* swifty_tictactoe.xcdatamodeld in Sources */,
 				51EBA6E8221DF12000A3F951 /* AppDelegate.swift in Sources */,
+				51EBA720221E013000A3F951 /* BoardCollectionViewCell.swift in Sources */,
 				51EBA719221DF27D00A3F951 /* MainGameScreenViewController.swift in Sources */,
+				51EBA71E221DFFFF00A3F951 /* BoardCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
