@@ -16,7 +16,7 @@ class BoardCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
         self.delegate = self
         self.dataSource = self
         self.register(BoardCollectionViewCell.self, forCellWithReuseIdentifier: BoardCollectionViewCell.description())
-        self.backgroundColor = UIColor.yellow
+        self.backgroundColor = UIColor.clear
         
     }
     
@@ -25,7 +25,7 @@ class BoardCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

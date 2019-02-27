@@ -20,16 +20,18 @@ class MainGameScreenViewController: UIViewController {
         
         let flowLayout = UICollectionViewFlowLayout()
             flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumInteritemSpacing = 5
+            flowLayout.minimumLineSpacing = 5
 
         let board = BoardCollectionView(frame: CGRect(x: self.view.frame.minX,
-                                                      y: self.view.frame.minY,
-                                                      width: self.view.frame.width,
-                                                      height: self.view.frame.height),
+                                                      y: self.view.frame.minY + 16,
+                                                      width: 160,
+                                                      height: 170),
                                         collectionViewLayout: flowLayout)
         
         self.view.addSubview(board)
         
-        board.fillSuperView()
+//        board.fillSuperView()
         
     }
 
