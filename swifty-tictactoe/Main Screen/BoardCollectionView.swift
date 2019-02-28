@@ -16,7 +16,7 @@ class BoardCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
         self.delegate = self
         self.dataSource = self
         self.register(BoardCollectionViewCell.self, forCellWithReuseIdentifier: BoardCollectionViewCell.description())
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.black
         
     }
     
@@ -29,10 +29,18 @@ class BoardCollectionView: UICollectionView, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.dequeueReusableCell(withReuseIdentifier: BoardCollectionViewCell.description(), for: indexPath)
+        let cell = self.dequeueReusableCell(withReuseIdentifier: BoardCollectionViewCell.description(), for: indexPath) as? BoardCollectionViewCell
         
-        cell.frame.size = CGSize(width: 50, height: 50)
-        return cell
+        cell?.frame.size = CGSize(width: 50, height: 50)
+        
+//        cell?.selectedStateImage = UIImageView(image: UIImage(named: "circle"), highlightedImage: nil)
+//        cell?.selectedStateImage?.frame.size = CGSize(width: 50, height: 50)
+        
+        return cell ?? UICollectionViewCell()
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cell = self.dequeueReusableCell(withReuseIdentifier: BoardCollectionViewCell.description(), for: indexPath) as? BoardCollectionViewCell
+//    }
 
 }

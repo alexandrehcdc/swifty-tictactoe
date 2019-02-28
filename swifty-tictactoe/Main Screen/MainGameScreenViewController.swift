@@ -9,6 +9,8 @@
 import UIKit
 
 class MainGameScreenViewController: UIViewController {
+    
+    var screenTitle: UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +31,20 @@ class MainGameScreenViewController: UIViewController {
                                                       height: 170),
                                         collectionViewLayout: flowLayout)
         
-        self.view.addSubview(board)
+        self.screenTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
+        self.screenTitle?.text = "Swifty Tic Tac Toe"
         
-//        board.fillSuperView()
+        self.view.addSubview(board)
+        self.view.addSubview(self.screenTitle!)
+        
+        board.anchor(top: self.view.topAnchor,
+                     leading: self.view.leadingAnchor,
+                     bottom: self.view.bottomAnchor,
+                     trailing: self.view.trailingAnchor,
+                     padding: UIEdgeInsets(top: 96, left: 16, bottom: 16, right: 16),
+                     size: CGSize(width: board.frame.width, height: board.frame.height))
+        
+        
         
     }
 
