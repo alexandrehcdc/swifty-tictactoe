@@ -33,6 +33,10 @@ class MainGameScreenViewController: UIViewController {
         
         self.screenTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         self.screenTitle?.text = "Swifty Tic Tac Toe"
+        self.screenTitle?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        self.screenTitle?.textAlignment = .center
+        self.screenTitle?.minimumScaleFactor = 0.5
+        self.screenTitle?.adjustsFontSizeToFitWidth = true
         
         self.view.addSubview(board)
         self.view.addSubview(self.screenTitle!)
@@ -41,7 +45,7 @@ class MainGameScreenViewController: UIViewController {
                      leading: self.view.leadingAnchor,
                      bottom: self.view.bottomAnchor,
                      trailing: self.view.trailingAnchor,
-                     padding: UIEdgeInsets(top: 96, left: 16, bottom: 16, right: 16),
+                     padding: UIEdgeInsets(top: 96, left: 16, bottom: 66, right: 16),
                      size: CGSize(width: board.frame.width, height: board.frame.height))
         
         
