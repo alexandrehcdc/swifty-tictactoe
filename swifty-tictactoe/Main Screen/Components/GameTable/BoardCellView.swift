@@ -13,11 +13,13 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        self.backgroundColor = UIColor.purple
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidPressed))
-        tap.numberOfTapsRequired = 1
-        tap.delegate = self
+            tap.numberOfTapsRequired = 1
+            tap.delegate = self
+        
+        self.backgroundColor = UIColor.white
+        
         self.addGestureRecognizer(tap)
     }
     

@@ -17,7 +17,7 @@ class MainBoardView: UIView {
         super.init(frame: frame)
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.borderWidth = 3
-        
+        self.backgroundColor = UIColor.black
         
         setSubviewsPositions()
         createViews()
@@ -32,15 +32,15 @@ class MainBoardView: UIView {
     }
     
     func setSubviewsPositions() {
-        viewPositions.append((self.frame.minX, self.frame.maxY))
+        viewPositions.append((self.frame.minX, self.frame.minY))
         viewPositions.append((self.frame.minX, (self.frame.maxY/3)*2))
         viewPositions.append((self.frame.minX, self.frame.maxY/3))
         
-        viewPositions.append((self.frame.maxX/3, self.frame.maxY))
+        viewPositions.append((self.frame.maxX/3, self.frame.minY))
         viewPositions.append((self.frame.maxX/3, (self.frame.maxY/3)*2))
         viewPositions.append((self.frame.maxX/3, self.frame.maxY/3))
         
-        viewPositions.append(((self.frame.maxX/3)*2, self.frame.maxY))
+        viewPositions.append(((self.frame.maxX/3)*2, self.frame.minY))
         viewPositions.append(((self.frame.maxX/3)*2, (self.frame.maxY/3)*2))
         viewPositions.append(((self.frame.maxX/3)*2, self.frame.maxY/3))
     }
