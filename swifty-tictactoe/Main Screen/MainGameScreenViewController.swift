@@ -20,16 +20,12 @@ class MainGameScreenViewController: UIViewController {
     
     func loadElements() {
         
-        let flowLayout = UICollectionViewFlowLayout()
-            flowLayout.scrollDirection = .horizontal
-            flowLayout.minimumInteritemSpacing = 5
-            flowLayout.minimumLineSpacing = 5
+        let viewAxisSize = self.view.frame.width - 32
 
-        let board = BoardCollectionView(frame: CGRect(x: self.view.frame.minX,
-                                                      y: self.view.frame.minY + 16,
-                                                      width: 160,
-                                                      height: 170),
-                                        collectionViewLayout: flowLayout)
+        let board = MainBoardView(frame: CGRect(x: self.view.frame.minX + 16,
+                                                y: self.view.frame.minY + 26,
+                                                width: viewAxisSize,
+                                                height: viewAxisSize))
         
         self.screenTitle = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         self.screenTitle?.text = "Swifty Tic Tac Toe"
@@ -39,14 +35,16 @@ class MainGameScreenViewController: UIViewController {
         self.screenTitle?.adjustsFontSizeToFitWidth = true
         
         self.view.addSubview(board)
-        self.view.addSubview(self.screenTitle!)
+//        self.view.addSubview(self.screenTitle!)
         
-        board.anchor(top: self.view.topAnchor,
-                     leading: self.view.leadingAnchor,
-                     bottom: self.view.bottomAnchor,
-                     trailing: self.view.trailingAnchor,
-                     padding: UIEdgeInsets(top: 96, left: 16, bottom: 66, right: 16),
-                     size: CGSize(width: board.frame.width, height: board.frame.height))
+//        board.anchor(top: nil,
+//                     leading: self.view.leadingAnchor,
+//                     bottom: nil,
+//                     trailing: self.view.trailingAnchor,
+//                     padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
+//                     size: CGSize(width: board.frame.width, height: board.frame.height))
+//        
+//        board.anchorCenterY(anchorY: self.view.centerYAnchor)
         
         
         

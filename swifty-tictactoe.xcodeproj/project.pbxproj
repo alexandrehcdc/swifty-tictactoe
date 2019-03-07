@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		45CBE34E222785A700EE6355 /* MainScreenButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CBE34D222785A700EE6355 /* MainScreenButtonsStackView.swift */; };
+		45D701CC2230A1BC00187CC0 /* MainBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701CB2230A1BC00187CC0 /* MainBoardView.swift */; };
+		45D701CF2230C2CB00187CC0 /* BoardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701CE2230C2CB00187CC0 /* BoardCellView.swift */; };
 		51EBA6E8221DF12000A3F951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA6E7221DF12000A3F951 /* AppDelegate.swift */; };
 		51EBA6F0221DF12000A3F951 /* swifty_tictactoe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA6EE221DF12000A3F951 /* swifty_tictactoe.xcdatamodeld */; };
 		51EBA6F2221DF12100A3F951 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51EBA6F1221DF12100A3F951 /* Assets.xcassets */; };
 		51EBA700221DF12100A3F951 /* swifty_tictactoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA6FF221DF12100A3F951 /* swifty_tictactoeTests.swift */; };
 		51EBA70B221DF12100A3F951 /* swifty_tictactoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA70A221DF12100A3F951 /* swifty_tictactoeUITests.swift */; };
 		51EBA719221DF27D00A3F951 /* MainGameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA718221DF27D00A3F951 /* MainGameScreenViewController.swift */; };
-		51EBA71E221DFFFF00A3F951 /* BoardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA71D221DFFFF00A3F951 /* BoardCollectionView.swift */; };
-		51EBA720221E013000A3F951 /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA71F221E013000A3F951 /* BoardCollectionViewCell.swift */; };
 		51EBA723221E077700A3F951 /* UIViewLayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA722221E077700A3F951 /* UIViewLayoutExtension.swift */; };
 		7BF8FF1A30F8F8B8E8C10BD0 /* Pods_swifty_tictactoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EA621BEC0199A899D93C24 /* Pods_swifty_tictactoe.framework */; };
 		9354634E9099B599241A80AD /* Pods_swifty_tictactoeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59E8A2C82D445C755725504 /* Pods_swifty_tictactoeUITests.framework */; };
@@ -43,6 +43,8 @@
 		14F59D6BEC26383B541E8FEF /* Pods-swifty-tictactoeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swifty-tictactoeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-swifty-tictactoeTests/Pods-swifty-tictactoeTests.release.xcconfig"; sourceTree = "<group>"; };
 		3EA84D53A9FD709519C5DA8B /* Pods-swifty-tictactoeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swifty-tictactoeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swifty-tictactoeTests/Pods-swifty-tictactoeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		45CBE34D222785A700EE6355 /* MainScreenButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenButtonsStackView.swift; sourceTree = "<group>"; };
+		45D701CB2230A1BC00187CC0 /* MainBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardView.swift; sourceTree = "<group>"; };
+		45D701CE2230C2CB00187CC0 /* BoardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellView.swift; sourceTree = "<group>"; };
 		51EBA6E4221DF12000A3F951 /* swifty-tictactoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swifty-tictactoe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51EBA6E7221DF12000A3F951 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51EBA6EF221DF12000A3F951 /* swifty_tictactoe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = swifty_tictactoe.xcdatamodel; sourceTree = "<group>"; };
@@ -55,8 +57,6 @@
 		51EBA70A221DF12100A3F951 /* swifty_tictactoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swifty_tictactoeUITests.swift; sourceTree = "<group>"; };
 		51EBA70C221DF12100A3F951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51EBA718221DF27D00A3F951 /* MainGameScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameScreenViewController.swift; sourceTree = "<group>"; };
-		51EBA71D221DFFFF00A3F951 /* BoardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionView.swift; sourceTree = "<group>"; };
-		51EBA71F221E013000A3F951 /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		51EBA722221E077700A3F951 /* UIViewLayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewLayoutExtension.swift; sourceTree = "<group>"; };
 		6AFF9F79B26A6CB9C23247DC /* Pods_swifty_tictactoeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swifty_tictactoeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E5CB4A6F04E9A540F0AD79B /* Pods-swifty-tictactoe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swifty-tictactoe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swifty-tictactoe/Pods-swifty-tictactoe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,11 +98,19 @@
 		45CBE34C2227857C00EE6355 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				51EBA71D221DFFFF00A3F951 /* BoardCollectionView.swift */,
-				51EBA71F221E013000A3F951 /* BoardCollectionViewCell.swift */,
+				45D701CA2230A19F00187CC0 /* GameTable */,
 				45CBE34D222785A700EE6355 /* MainScreenButtonsStackView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		45D701CA2230A19F00187CC0 /* GameTable */ = {
+			isa = PBXGroup;
+			children = (
+				45D701CB2230A1BC00187CC0 /* MainBoardView.swift */,
+				45D701CE2230C2CB00187CC0 /* BoardCellView.swift */,
+			);
+			path = GameTable;
 			sourceTree = "<group>";
 		};
 		51EBA6DB221DF12000A3F951 = {
@@ -401,11 +409,11 @@
 			files = (
 				51EBA6F0221DF12000A3F951 /* swifty_tictactoe.xcdatamodeld in Sources */,
 				51EBA6E8221DF12000A3F951 /* AppDelegate.swift in Sources */,
+				45D701CF2230C2CB00187CC0 /* BoardCellView.swift in Sources */,
 				51EBA723221E077700A3F951 /* UIViewLayoutExtension.swift in Sources */,
-				51EBA720221E013000A3F951 /* BoardCollectionViewCell.swift in Sources */,
 				45CBE34E222785A700EE6355 /* MainScreenButtonsStackView.swift in Sources */,
 				51EBA719221DF27D00A3F951 /* MainGameScreenViewController.swift in Sources */,
-				51EBA71E221DFFFF00A3F951 /* BoardCollectionView.swift in Sources */,
+				45D701CC2230A1BC00187CC0 /* MainBoardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
