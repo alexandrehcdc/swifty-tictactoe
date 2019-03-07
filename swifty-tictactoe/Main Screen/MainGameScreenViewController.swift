@@ -22,8 +22,8 @@ class MainGameScreenViewController: UIViewController {
         
         let viewAxisSize = self.view.frame.width - 32
 
-        let board = MainBoardView(frame: CGRect(x: self.view.frame.minX + 16,
-                                                y: self.view.frame.minY + 26,
+        let board = MainBoardView(frame: CGRect(x: self.view.frame.minX,
+                                                y: self.view.frame.minY,
                                                 width: viewAxisSize,
                                                 height: viewAxisSize))
         
@@ -37,14 +37,14 @@ class MainGameScreenViewController: UIViewController {
         self.view.addSubview(board)
 //        self.view.addSubview(self.screenTitle!)
         
-//        board.anchor(top: nil,
-//                     leading: self.view.leadingAnchor,
-//                     bottom: nil,
-//                     trailing: self.view.trailingAnchor,
-//                     padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
-//                     size: CGSize(width: board.frame.width, height: board.frame.height))
-//        
-//        board.anchorCenterY(anchorY: self.view.centerYAnchor)
+        board.anchor(top: nil,
+                     leading: self.view.leadingAnchor,
+                     bottom: nil,
+                     trailing: self.view.trailingAnchor,
+                     padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
+                     size: CGSize(width: board.frame.width, height: board.frame.height))
+//
+        board.anchorCenterY(anchorY: self.view.centerYAnchor)
         
         
         

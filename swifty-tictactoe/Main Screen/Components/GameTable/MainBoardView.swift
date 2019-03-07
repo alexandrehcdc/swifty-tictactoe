@@ -47,8 +47,9 @@ class MainBoardView: UIView {
     
     func createViews() {
         for (x,y) in self.viewPositions {
-            let newView = BoardCellView(frame: CGRect(x: x, y: y, width: 50, height: 50))
+            let newView = BoardCellView(frame: CGRect(x: x, y: y, width: (self.frame.width/3)-2, height: (self.frame.height/3)-2))
             self.addSubview(newView)
+            self.layoutIfNeeded()
         }
     }
     
