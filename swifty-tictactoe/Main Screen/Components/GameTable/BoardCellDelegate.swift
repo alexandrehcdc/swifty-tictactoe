@@ -11,4 +11,5 @@ import UIKit
 protocol BoardCellDelegate: class {
     func updateBoard(squareId: Int, player: PlayerTypeEnum)
     func getPlayerData() -> (PlayerTypeEnum, UIImage)
+    func checkGameStatus()
 }

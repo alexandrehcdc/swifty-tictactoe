@@ -12,18 +12,17 @@ class MainGameScreenViewController: UIViewController {
     
     var screenTitle: UILabel?
     
-    var winningSequences = [[0,1,2],
-                            [3,4,5],
-                            [6,7,8],
-                            [0,3,6],
-                            [1,4,7],
-                            [2,5,8],
-                            [0,4,8],
-                            [6,4,2]]
+    var winningSequences = [[0,1,2], [3,4,5],
+                            [6,7,8], [0,3,6],
+                            [1,4,7], [2,5,8],
+                            [0,4,8], [6,4,2]]
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.white
+        
         loadElements()
     }
     
@@ -37,7 +36,7 @@ class MainGameScreenViewController: UIViewController {
                                                 height: viewAxisSize))
         
         board.computerPickedImage = UIImage(named: "cross")
-        board.playerPickedImage = UIImage(named: "circle")
+        board.playerPickedImage   = UIImage(named: "circle")
         
         self.view.addSubview(board)
         
