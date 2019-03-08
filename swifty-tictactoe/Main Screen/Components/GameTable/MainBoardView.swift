@@ -10,17 +10,21 @@ import UIKit
 
 class MainBoardView: UIView {
     
-    var path = UIBezierPath()
     var viewPositions = [(CGFloat, CGFloat)]()
+    var board = [PlayerTypeEnum]()
+    
+    var player: PlayerTypeEnum = .none
+    var playerPickedImage: UIImage?
+    var computerPickedImage: UIImage?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 3
         self.backgroundColor = UIColor.black
         
         setSubviewsPositions()
-        createViews()
+        startGame()
     }
     
     override var safeAreaLayoutGuide: UILayoutGuide {
@@ -33,24 +37,59 @@ class MainBoardView: UIView {
     
     func setSubviewsPositions() {
         viewPositions.append((self.frame.minX, self.frame.minY))
-        viewPositions.append((self.frame.minX, (self.frame.maxY/3)*2))
         viewPositions.append((self.frame.minX, self.frame.maxY/3))
+        viewPositions.append((self.frame.minX, (self.frame.maxY/3)*2))
         
         viewPositions.append((self.frame.maxX/3, self.frame.minY))
-        viewPositions.append((self.frame.maxX/3, (self.frame.maxY/3)*2))
         viewPositions.append((self.frame.maxX/3, self.frame.maxY/3))
+        viewPositions.append((self.frame.maxX/3, (self.frame.maxY/3)*2))
         
         viewPositions.append(((self.frame.maxX/3)*2, self.frame.minY))
-        viewPositions.append(((self.frame.maxX/3)*2, (self.frame.maxY/3)*2))
         viewPositions.append(((self.frame.maxX/3)*2, self.frame.maxY/3))
+        viewPositions.append(((self.frame.maxX/3)*2, (self.frame.maxY/3)*2))
     }
     
-    func createViews() {
-        for (x,y) in self.viewPositions {
-            let newView = BoardCellView(frame: CGRect(x: x, y: y, width: (self.frame.width/3)-2, height: (self.frame.height/3)-2))
+    func startGame() {
+        
+        for (index, element) in self.viewPositions.enumerated() {
+            
+            let newView = BoardCellView(frame: CGRect(x: element.0,
+                                                      y: element.1,
+                                                      width: (self.frame.width/3)-2,
+                                                      height: (self.frame.height/3)-2))
+            
+            newView.delegate = self
+            newView.id = index
+            
             self.addSubview(newView)
-            self.layoutIfNeeded()
+            self.board.append(PlayerTypeEnum.none)
         }
+    }
+    
+}
+
+extension MainBoardView: BoardCellDelegate {
+    
+    func updateBoard(squareId: Int, player: PlayerTypeEnum) {
+        self.board[squareId] = player
+    }
+    
+    func getPlayerData() -> (PlayerTypeEnum, UIImage) {
+        
+        guard let aiPickedImage = self.computerPickedImage,
+              let playerPickedImage = self.playerPickedImage else {
+            return (self.player, UIImage())
+        }
+        
+        switch self.player {
+            case .computer:
+                return (self.player, aiPickedImage)
+            case .player:
+                return (self.player, playerPickedImage)
+            default:
+                return (self.player, UIImage())
+        }
+
     }
     
 }

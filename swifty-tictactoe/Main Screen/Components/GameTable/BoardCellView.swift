@@ -10,15 +10,19 @@ import UIKit
 
 class BoardCellView: UIView, UIGestureRecognizerDelegate {
     
+    var id = 0
+    
+    weak var delegate: BoardCellDelegate?
+    
     override init(frame: CGRect) {
         
         super.init(frame: frame)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidPressed))
-            tap.numberOfTapsRequired = 1
-            tap.delegate = self
-        
         self.backgroundColor = UIColor.white
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidPressed))
+        tap.numberOfTapsRequired = 1
+        tap.delegate = self
         
         self.addGestureRecognizer(tap)
     }
@@ -28,9 +32,19 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
     }
     
     @objc func viewDidPressed(touch: UITapGestureRecognizer) {
-        let touchPoint = touch.location(in: self)
         
-        print("x \(touchPoint.x) and y \(touchPoint.y)")
+        self.delegate?.updateBoard(squareId: self.id, player: .computer)
+        guard let playerData = self.delegate?.getPlayerData() else { return }
+        
+//        guard var playerImage = self.image else { return }
+        
+        let imageView   = UIImageView(image: playerData.1)
+//        imageView.frame = CGRect(x: self.frame.minX,
+//                                 y: self.frame.minY, width: self.frame.width, height: self.frame.height)
+        
+        self.addSubview(imageView)
+        
+        imageView.fillSuperView()
     }
     
 }
