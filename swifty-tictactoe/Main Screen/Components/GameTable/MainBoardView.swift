@@ -13,7 +13,7 @@ class MainBoardView: UIView {
     var viewPositions = [(CGFloat, CGFloat)]()
     var board = [PlayerTypeEnum]()
     
-    var player: PlayerTypeEnum = .none
+    var currentPlayer: PlayerTypeEnum = .player
     var playerPickedImage: UIImage?
     var computerPickedImage: UIImage?
     
@@ -78,16 +78,20 @@ extension MainBoardView: BoardCellDelegate {
         
         guard let aiPickedImage = self.computerPickedImage,
               let playerPickedImage = self.playerPickedImage else {
-            return (self.player, UIImage())
+            return (self.currentPlayer, UIImage())
         }
         
-        switch self.player {
+        switch self.currentPlayer {
             case .computer:
-                return (self.player, aiPickedImage)
+                let player = self.currentPlayer
+                self.currentPlayer = .player
+                return (player, aiPickedImage)
             case .player:
-                return (self.player, playerPickedImage)
+                let player = self.currentPlayer
+                self.currentPlayer = .computer
+                return (player, playerPickedImage)
             default:
-                return (self.player, UIImage())
+                return (self.currentPlayer, UIImage())
         }
 
     }

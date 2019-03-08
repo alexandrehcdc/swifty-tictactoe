@@ -36,6 +36,9 @@ class MainGameScreenViewController: UIViewController {
                                                 width: viewAxisSize,
                                                 height: viewAxisSize))
         
+        board.computerPickedImage = UIImage(named: "cross")
+        board.playerPickedImage = UIImage(named: "circle")
+        
         self.view.addSubview(board)
         
         board.anchor(top: nil,
