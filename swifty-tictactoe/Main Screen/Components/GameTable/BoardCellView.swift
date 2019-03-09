@@ -33,14 +33,19 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
     
     @objc func viewDidPressed(touch: UITapGestureRecognizer) {
         
-        self.delegate?.updateBoard(squareId: self.id, player: .computer)
+        guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: .computer) else { return }
         
-        guard let playerData = self.delegate?.getPlayerData() else { return }
-        let imageView   = UIImageView(image: playerData.1)
+        if isBoardUpdated {
+            
+            guard let playerData = self.delegate?.getPlayerData() else { return }
+                  let imageView  = UIImageView(image: playerData.1)
+            
+            self.addSubview(imageView)
+            
+            imageView.fillSuperView()
+            
+        }
         
-        self.addSubview(imageView)
-        
-        imageView.fillSuperView()
     }
     
 }

@@ -119,6 +119,13 @@
 			path = GameTable;
 			sourceTree = "<group>";
 		};
+		45D701D022333EFD00187CC0 /* Player Picker Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Player Picker Screen";
+			sourceTree = "<group>";
+		};
 		51EBA6DB221DF12000A3F951 = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +151,9 @@
 		51EBA6E6221DF12000A3F951 /* swifty-tictactoe */ = {
 			isa = PBXGroup;
 			children = (
+				45D701D022333EFD00187CC0 /* Player Picker Screen */,
 				51EBA71A221DFF9F00A3F951 /* Main Screen */,
+				51EBA721221E075800A3F951 /* Extensions */,
 				51EBA6E7221DF12000A3F951 /* AppDelegate.swift */,
 				51EBA6F1221DF12100A3F951 /* Assets.xcassets */,
 				51EBA6F6221DF12100A3F951 /* Info.plist */,
@@ -175,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				45CBE34C2227857C00EE6355 /* Components */,
-				51EBA721221E075800A3F951 /* Extensions */,
 				51EBA718221DF27D00A3F951 /* MainGameScreenViewController.swift */,
 			);
 			path = "Main Screen";

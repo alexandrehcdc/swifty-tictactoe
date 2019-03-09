@@ -66,8 +66,12 @@ class MainBoardView: UIView {
 
 extension MainBoardView: BoardCellDelegate {
     
-    func updateBoard(squareId: Int, player: PlayerTypeEnum) {
-        self.board[squareId] = player
+    func updateBoard(squareId: Int, player: PlayerTypeEnum) -> Bool {
+        if self.board[squareId] == .none {
+            self.board[squareId] = player
+            return true
+        }
+        return false
     }
     
     func getPlayerData() -> (PlayerTypeEnum, UIImage) {
