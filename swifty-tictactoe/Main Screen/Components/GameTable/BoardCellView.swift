@@ -21,8 +21,8 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         self.backgroundColor = UIColor.white
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidPressed))
-        tap.numberOfTapsRequired = 1
-        tap.delegate = self
+            tap.numberOfTapsRequired = 1
+            tap.delegate = self
         
         self.addGestureRecognizer(tap)
     }
@@ -33,18 +33,21 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
     
     @objc func viewDidPressed(touch: UITapGestureRecognizer) {
         
-        guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: .computer) else { return }
+        guard let playerData = self.delegate?.getPlayerData() else { return }
+        
+        guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: playerData.0) else { return }
         
         if isBoardUpdated {
             
-            guard let playerData = self.delegate?.getPlayerData() else { return }
-                  let imageView  = UIImageView(image: playerData.1)
+            let imageView  = UIImageView(image: playerData.1)
             
             self.addSubview(imageView)
             
             imageView.fillSuperView()
             
         }
+        
+        self.delegate?.checkGameStatus(player: playerData.0)
         
     }
     

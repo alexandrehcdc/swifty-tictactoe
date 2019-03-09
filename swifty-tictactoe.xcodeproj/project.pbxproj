@@ -10,6 +10,7 @@
 		45CBE34E222785A700EE6355 /* MainScreenButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CBE34D222785A700EE6355 /* MainScreenButtonsStackView.swift */; };
 		45D701CC2230A1BC00187CC0 /* MainBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701CB2230A1BC00187CC0 /* MainBoardView.swift */; };
 		45D701CF2230C2CB00187CC0 /* BoardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701CE2230C2CB00187CC0 /* BoardCellView.swift */; };
+		45D701D22233EFE900187CC0 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701D12233EFE900187CC0 /* ArrayExtensions.swift */; };
 		514BB5682232ECBE0006E380 /* PlayerTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514BB5672232ECBE0006E380 /* PlayerTypeEnum.swift */; };
 		514BB56C2232F9E70006E380 /* BoardCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514BB56B2232F9E70006E380 /* BoardCellDelegate.swift */; };
 		51EBA6E8221DF12000A3F951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EBA6E7221DF12000A3F951 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		45CBE34D222785A700EE6355 /* MainScreenButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenButtonsStackView.swift; sourceTree = "<group>"; };
 		45D701CB2230A1BC00187CC0 /* MainBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardView.swift; sourceTree = "<group>"; };
 		45D701CE2230C2CB00187CC0 /* BoardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellView.swift; sourceTree = "<group>"; };
+		45D701D12233EFE900187CC0 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		514BB5672232ECBE0006E380 /* PlayerTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTypeEnum.swift; sourceTree = "<group>"; };
 		514BB56B2232F9E70006E380 /* BoardCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellDelegate.swift; sourceTree = "<group>"; };
 		51EBA6E4221DF12000A3F951 /* swifty-tictactoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swifty-tictactoe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				51EBA722221E077700A3F951 /* UIViewLayoutExtension.swift */,
+				45D701D12233EFE900187CC0 /* ArrayExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51EBA6F0221DF12000A3F951 /* swifty_tictactoe.xcdatamodeld in Sources */,
+				45D701D22233EFE900187CC0 /* ArrayExtensions.swift in Sources */,
 				51EBA6E8221DF12000A3F951 /* AppDelegate.swift in Sources */,
 				45D701CF2230C2CB00187CC0 /* BoardCellView.swift in Sources */,
 				51EBA723221E077700A3F951 /* UIViewLayoutExtension.swift in Sources */,

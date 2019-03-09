@@ -17,6 +17,11 @@ class MainBoardView: UIView {
     var playerPickedImage: UIImage?
     var computerPickedImage: UIImage?
     
+    let winningSequences = [[0,1,2], [3,4,5],
+                            [6,7,8], [0,3,6],
+                            [1,4,7], [2,5,8],
+                            [0,4,8], [6,4,2]]
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.borderColor = UIColor.white.cgColor
@@ -59,7 +64,9 @@ class MainBoardView: UIView {
             
             self.addSubview(newView)
             self.board.append(PlayerTypeEnum.none)
+            
         }
+        
     }
     
 }
@@ -96,7 +103,18 @@ extension MainBoardView: BoardCellDelegate {
 
     }
     
-    func checkGameStatus() {
+    func checkGameStatus(player: PlayerTypeEnum) {
+        
+        let indices = self.board.indices.filter { self.board[$0] == player }
+        
+        for possibility in winningSequences {
+            
+            if indices.count > 2 && indices.contained(elements: possibility).count > 2 {
+                print("You won!")
+                break
+            }
+            
+        }
         
     }
     
