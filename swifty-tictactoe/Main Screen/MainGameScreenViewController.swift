@@ -11,6 +11,8 @@ import UIKit
 class MainGameScreenViewController: UIViewController {
     
     var screenTitle: UILabel?
+    
+    var gameBoard = MainBoardView()
 
     override func viewDidLoad() {
         
@@ -25,25 +27,39 @@ class MainGameScreenViewController: UIViewController {
         
         let viewAxisSize = self.view.frame.width - 32
 
-        let board = MainBoardView(frame: CGRect(x: self.view.frame.minX,
-                                                y: self.view.frame.minY,
-                                                width: viewAxisSize,
-                                                height: viewAxisSize))
+        self.gameBoard = MainBoardView(frame: CGRect(x: self.view.frame.minX,
+                                                     y: self.view.frame.minY,
+                                                     width: viewAxisSize,
+                                                     height: viewAxisSize))
         
-        board.computerPickedImage = UIImage(named: "cross")
-        board.playerPickedImage   = UIImage(named: "circle")
+        self.gameBoard.delegate            = self
+        self.gameBoard.computerPickedImage = UIImage(named: "cross")
+        self.gameBoard.playerPickedImage   = UIImage(named: "circle")
         
-        self.view.addSubview(board)
+        self.view.addSubview(self.gameBoard)
         
-        board.anchor(top: nil,
+        self.gameBoard.anchor(top: nil,
                      leading: self.view.leadingAnchor,
                      bottom: nil,
                      trailing: self.view.trailingAnchor,
                      padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
-                     size: CGSize(width: board.frame.width, height: board.frame.height))
+                     size: CGSize(width: self.gameBoard.frame.width, height: self.gameBoard.frame.height))
 
-        board.anchorCenterY(anchorY: self.view.centerYAnchor)
+        self.gameBoard.anchorCenterY(anchorY: self.view.centerYAnchor)
         
     }
 
+}
+
+extension MainGameScreenViewController: MainBoardDelegate {
+    
+    func endGame() {
+        self.gameBoard.removeFromSuperview()
+    }
+    
+    func restartGame() {
+        self.endGame()
+        self.loadElements()
+    }
+    
 }

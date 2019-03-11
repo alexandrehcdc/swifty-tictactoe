@@ -10,8 +10,11 @@ import UIKit
 
 class MainBoardView: UIView {
     
+    weak var delegate: MainBoardDelegate?
+         var drawer: UIBezierPath?
+    
     var viewPositions = [(CGFloat, CGFloat)]()
-    var board = [PlayerTypeEnum]()
+    var board         = [PlayerTypeEnum]()
     
     var currentPlayer: PlayerTypeEnum = .player
     var playerPickedImage: UIImage?
@@ -32,8 +35,31 @@ class MainBoardView: UIView {
         startGame()
     }
     
+    override func draw(_ rect: CGRect) {
+        
+        self.drawer = UIBezierPath()
+        self.drawer?.move(to: CGPoint(x: 10, y: 10))
+        self.drawer?.addLine(to: CGPoint(x: 30, y: 30))
+        self.drawer?.addLine(to: CGPoint(x: 50, y: 50))
+        
+        self.drawer?.close()
+        
+        UIColor.orange.setFill()
+        self.drawer?.fill()
+        
+        // Specify a border (stroke) color.
+        UIColor.purple.setStroke()
+        self.drawer?.stroke()
+        
+//
+//        self.drawer?.drawLineBy(points: [CGPoint(x: (self.superview?.frame.minX)!, y: (self.superview?.frame.maxY)!), CGPoint(x: (self.superview?.frame.midX)!, y: (self.superview?.frame.midY)!)])
+//
+//        self.drawer?.close()
+        
+    }
+    
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     func setSubviewsPositions() {
@@ -109,8 +135,10 @@ extension MainBoardView: BoardCellDelegate {
         
         for possibility in winningSequences {
             
-            if indices.count > 2 && indices.contained(elements: possibility).count > 2 {
-                print("You won!")
+            let containedElements = indices.contained(elements: possibility)
+            
+            if indices.count > 2 && containedElements.count > 2 {
+                self.delegate?.restartGame()
                 break
             }
             

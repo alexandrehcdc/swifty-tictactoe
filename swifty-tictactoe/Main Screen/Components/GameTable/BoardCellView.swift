@@ -11,6 +11,9 @@ import UIKit
 class BoardCellView: UIView, UIGestureRecognizerDelegate {
     
     var id = 0
+    var imageView = UIImageView()
+    
+    var drawer: UIBezierPath?
     
     weak var delegate: BoardCellDelegate?
     
@@ -22,7 +25,7 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidPressed))
             tap.numberOfTapsRequired = 1
-            tap.delegate = self
+            tap.delegate             = self
         
         self.addGestureRecognizer(tap)
     }
@@ -33,13 +36,14 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
     
     @objc func viewDidPressed(touch: UITapGestureRecognizer) {
         
-        guard let playerData = self.delegate?.getPlayerData() else { return }
+        if self.imageView.isDescendant(of: self) { return }
         
+        guard let playerData     = self.delegate?.getPlayerData() else { return }
         guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: playerData.0) else { return }
         
         if isBoardUpdated {
             
-            let imageView  = UIImageView(image: playerData.1)
+            imageView = UIImageView(image: playerData.1)
             
             self.addSubview(imageView)
             
