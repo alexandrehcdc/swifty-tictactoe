@@ -33,8 +33,8 @@ class MainGameScreenViewController: UIViewController {
                                                      height: viewAxisSize))
         
         self.gameBoard.delegate            = self
-        self.gameBoard.computerPickedImage = UIImage(named: "cross")
-        self.gameBoard.playerPickedImage   = UIImage(named: "circle")
+        self.gameBoard.computerPickedImage = UIImage.assets.cross
+        self.gameBoard.playerPickedImage   = UIImage.assets.circle
         
         self.view.addSubview(self.gameBoard)
         

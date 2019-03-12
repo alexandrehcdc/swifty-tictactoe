@@ -11,7 +11,7 @@ import UIKit
 class MainBoardView: UIView {
     
     weak var delegate: MainBoardDelegate?
-         var drawer: UIBezierPath?
+         var drawer:   UIBezierPath?
     
     var viewPositions = [(CGFloat, CGFloat)]()
     var board         = [PlayerTypeEnum]()
@@ -27,9 +27,10 @@ class MainBoardView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 3
-        self.backgroundColor = UIColor.black
+        self.backgroundColor   = UIColor.black
         
         setSubviewsPositions()
         startGame()
