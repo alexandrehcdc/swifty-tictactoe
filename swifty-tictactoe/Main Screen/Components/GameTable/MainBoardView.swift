@@ -29,7 +29,7 @@ class MainBoardView: UIView {
         
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 3
-        self.backgroundColor   = UIColor.purple
+        self.backgroundColor   = UIColor.black
         
         setSubviewsPositions()
         startGame()
@@ -67,24 +67,8 @@ class MainBoardView: UIView {
             
             self.addSubview(newView)
             self.board.append((newView, PlayerTypeEnum.none))
-            
         }
         
-    }
-    
-    func winnerLine(points: [CGPoint]) {
-        
-        let shapeLayer = CAShapeLayer()
-        let path       = UIBezierPath().drawLineBy(points: points, color: .red)
-        
-        shapeLayer.path = path.cgPath
-        
-        shapeLayer.strokeColor = UIColor.blue.cgColor
-        shapeLayer.fillColor = UIColor.white.cgColor
-        shapeLayer.lineWidth = 1.0
-        shapeLayer.position = CGPoint(x: 10, y: 10)
-        
-        self.layer.addSublayer(shapeLayer)
     }
     
 }
@@ -131,9 +115,9 @@ extension MainBoardView: BoardCellDelegate {
             
             if indices.count > 2 && containedElements.count > 2 {
                 
-                let positions = possibility.map { CGPoint(x: self.board[$0].0.frame.midX,
-                                                          y: self.board[$0].0.frame.midY) }
-                self.winnerLine(points: positions)
+                possibility.forEach {
+                    self.board[$0].0.imageView.tintColor = UIColor.green
+                }
                 
                 break
             }

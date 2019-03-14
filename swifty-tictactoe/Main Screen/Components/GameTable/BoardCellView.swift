@@ -43,7 +43,7 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         
         if isBoardUpdated {
             
-            imageView = UIImageView(image: playerData.1)
+            imageView = UIImageView(image: playerData.1.withRenderingMode(.alwaysTemplate))
             
             imageView.frame = CGRect(x: self.frame.midX,
                                      y: self.frame.midY,
