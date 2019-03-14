@@ -19,6 +19,7 @@ class MainBoardView: UIView {
     var playerPickedImage: UIImage?
     var computerPickedImage: UIImage?
     
+    let blockageView     = UIView()
     let winningSequences = [[0,1,2], [3,4,5],
                             [6,7,8], [0,3,6],
                             [1,4,7], [2,5,8],
@@ -67,61 +68,6 @@ class MainBoardView: UIView {
             
             self.addSubview(newView)
             self.board.append((newView, PlayerTypeEnum.none))
-        }
-        
-    }
-    
-}
-
-extension MainBoardView: BoardCellDelegate {
-    
-    func updateBoard(squareId: Int, player: PlayerTypeEnum) -> Bool {
-        if self.board[squareId].1 == .none {
-            self.board[squareId].1 = player
-            return true
-        }
-        return false
-    }
-    
-    func getPlayerData() -> (PlayerTypeEnum, UIImage) {
-        
-        guard let aiPickedImage = self.computerPickedImage,
-              let playerPickedImage = self.playerPickedImage else {
-            return (self.currentPlayer, UIImage())
-        }
-        
-        switch self.currentPlayer {
-            case .computer:
-                let player = self.currentPlayer
-                self.currentPlayer = .player
-                return (player, aiPickedImage)
-            case .player:
-                let player = self.currentPlayer
-                self.currentPlayer = .computer
-                return (player, playerPickedImage)
-            default:
-                return (self.currentPlayer, UIImage())
-        }
-
-    }
-    
-    func checkGameStatus(player: PlayerTypeEnum) {
-        
-        let indices = self.board.indices.filter { self.board[$0].1 == player }
-        
-        for possibility in winningSequences {
-            
-            let containedElements = indices.contained(elements: possibility)
-            
-            if indices.count > 2 && containedElements.count > 2 {
-                
-                possibility.forEach {
-                    self.board[$0].0.imageView.tintColor = UIColor.green
-                }
-                
-                break
-            }
-            
         }
         
     }

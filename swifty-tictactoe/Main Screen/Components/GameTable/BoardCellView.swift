@@ -36,8 +36,6 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         
         if self.imageView.isDescendant(of: self) { return }
         
-        print(self.id)
-        
         guard let playerData     = self.delegate?.getPlayerData() else { return }
         guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: playerData.0) else { return }
         
