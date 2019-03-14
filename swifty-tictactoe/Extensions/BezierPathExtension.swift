@@ -10,8 +10,8 @@ import UIKit
 
 extension UIBezierPath {
     
-    func drawLineBy(points: [CGPoint], color: UIColor = UIColor.red) {
-        guard let firstPoint   = points.first else { return }
+    func drawLineBy(points: [CGPoint], color: UIColor = UIColor.red) -> UIBezierPath {
+        guard let firstPoint   = points.first else { return UIBezierPath() }
         let pointsToDraw = Array(points.dropFirst())
         
         self.move(to: firstPoint)
@@ -22,8 +22,9 @@ extension UIBezierPath {
         
         color.setFill()
         self.fill()
-        
         self.close()
+        
+        return self
     }
     
 }

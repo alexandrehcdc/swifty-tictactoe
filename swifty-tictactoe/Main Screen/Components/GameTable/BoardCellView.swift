@@ -13,8 +13,6 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
     var id = 0
     var imageView = UIImageView()
     
-    var drawer: UIBezierPath?
-    
     weak var delegate: BoardCellDelegate?
     
     override init(frame: CGRect) {
@@ -38,6 +36,8 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         
         if self.imageView.isDescendant(of: self) { return }
         
+        print(self.id)
+        
         guard let playerData     = self.delegate?.getPlayerData() else { return }
         guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: playerData.0) else { return }
         
@@ -45,9 +45,21 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
             
             imageView = UIImageView(image: playerData.1)
             
+            imageView.frame = CGRect(x: self.frame.midX,
+                                     y: self.frame.midY,
+                                     width: self.frame.width/2,
+                                     height: self.frame.height/2)
+            
             self.addSubview(imageView)
             
-            imageView.fillSuperView()
+            imageView.anchor(top: self.topAnchor,
+                             leading: self.leadingAnchor,
+                             bottom: self.bottomAnchor,
+                             trailing: self.trailingAnchor,
+                             padding: UIEdgeInsets(top: self.frame.height/4,
+                                                   left: self.frame.width/4,
+                                                   bottom: self.frame.height/4,
+                                                   right: self.frame.width/4))
             
         }
         

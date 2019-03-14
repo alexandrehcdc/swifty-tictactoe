@@ -11,10 +11,9 @@ import UIKit
 class MainBoardView: UIView {
     
     weak var delegate: MainBoardDelegate?
-         var drawer:   UIBezierPath?
     
     var viewPositions = [(CGFloat, CGFloat)]()
-    var board         = [PlayerTypeEnum]()
+    var board         = [(BoardCellView, PlayerTypeEnum)]()
     
     var currentPlayer: PlayerTypeEnum = .player
     var playerPickedImage: UIImage?
@@ -30,33 +29,10 @@ class MainBoardView: UIView {
         
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 3
-        self.backgroundColor   = UIColor.black
+        self.backgroundColor   = UIColor.purple
         
         setSubviewsPositions()
         startGame()
-    }
-    
-    override func draw(_ rect: CGRect) {
-        
-        self.drawer = UIBezierPath()
-        self.drawer?.move(to: CGPoint(x: 10, y: 10))
-        self.drawer?.addLine(to: CGPoint(x: 30, y: 30))
-        self.drawer?.addLine(to: CGPoint(x: 50, y: 50))
-        
-        self.drawer?.close()
-        
-        UIColor.orange.setFill()
-        self.drawer?.fill()
-        
-        // Specify a border (stroke) color.
-        UIColor.purple.setStroke()
-        self.drawer?.stroke()
-        
-//
-//        self.drawer?.drawLineBy(points: [CGPoint(x: (self.superview?.frame.minX)!, y: (self.superview?.frame.maxY)!), CGPoint(x: (self.superview?.frame.midX)!, y: (self.superview?.frame.midY)!)])
-//
-//        self.drawer?.close()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -90,10 +66,25 @@ class MainBoardView: UIView {
             newView.id = index
             
             self.addSubview(newView)
-            self.board.append(PlayerTypeEnum.none)
+            self.board.append((newView, PlayerTypeEnum.none))
             
         }
         
+    }
+    
+    func winnerLine(points: [CGPoint]) {
+        
+        let shapeLayer = CAShapeLayer()
+        let path       = UIBezierPath().drawLineBy(points: points, color: .red)
+        
+        shapeLayer.path = path.cgPath
+        
+        shapeLayer.strokeColor = UIColor.blue.cgColor
+        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.lineWidth = 1.0
+        shapeLayer.position = CGPoint(x: 10, y: 10)
+        
+        self.layer.addSublayer(shapeLayer)
     }
     
 }
@@ -101,8 +92,8 @@ class MainBoardView: UIView {
 extension MainBoardView: BoardCellDelegate {
     
     func updateBoard(squareId: Int, player: PlayerTypeEnum) -> Bool {
-        if self.board[squareId] == .none {
-            self.board[squareId] = player
+        if self.board[squareId].1 == .none {
+            self.board[squareId].1 = player
             return true
         }
         return false
@@ -132,14 +123,18 @@ extension MainBoardView: BoardCellDelegate {
     
     func checkGameStatus(player: PlayerTypeEnum) {
         
-        let indices = self.board.indices.filter { self.board[$0] == player }
+        let indices = self.board.indices.filter { self.board[$0].1 == player }
         
         for possibility in winningSequences {
             
             let containedElements = indices.contained(elements: possibility)
             
             if indices.count > 2 && containedElements.count > 2 {
-                self.delegate?.restartGame()
+                
+                let positions = possibility.map { CGPoint(x: self.board[$0].0.frame.midX,
+                                                          y: self.board[$0].0.frame.midY) }
+                self.winnerLine(points: positions)
+                
                 break
             }
             
