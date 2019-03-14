@@ -83,7 +83,15 @@ extension MainBoardView: BoardCellDelegate {
         
         self.currentPlayer = .computer
         
+        let freePos = self.board.filter { $0.1 == .none }
         
+        guard let nextPos = freePos.first else { return }
+        
+        let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: nextPos.1)
+        
+        if boardUpdated {
+            nextPos.0.imageView = UIImageView(image: UIImage(named: "cross")!.withRenderingMode(.alwaysTemplate))
+        }
         
     }
     

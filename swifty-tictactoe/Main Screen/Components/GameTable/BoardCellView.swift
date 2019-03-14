@@ -11,7 +11,10 @@ import UIKit
 class BoardCellView: UIView, UIGestureRecognizerDelegate {
     
     var id = 0
-    var imageView = UIImageView()
+    
+    var imageView = UIImageView() {
+        didSet { self.setImageLayout() }
+    }
     
     weak var delegate: BoardCellDelegate?
     
@@ -32,6 +35,25 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setImageLayout() {
+        
+        imageView.frame = CGRect(x: self.frame.midX,
+                                 y: self.frame.midY,
+                                 width: self.frame.width/2,
+                                 height: self.frame.height/2)
+        
+        self.addSubview(imageView)
+        
+        imageView.anchor(top: self.topAnchor,
+                         leading: self.leadingAnchor,
+                         bottom: self.bottomAnchor,
+                         trailing: self.trailingAnchor,
+                         padding: UIEdgeInsets(top: self.frame.height/4,
+                                               left: self.frame.width/4,
+                                               bottom: self.frame.height/4,
+                                               right: self.frame.width/4))
+    }
+    
     @objc func viewDidPressed(touch: UITapGestureRecognizer) {
         
         if self.imageView.isDescendant(of: self) { return }
@@ -40,29 +62,10 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: playerData.0) else { return }
         
         if isBoardUpdated {
-            
             imageView = UIImageView(image: playerData.1.withRenderingMode(.alwaysTemplate))
-            
-            imageView.frame = CGRect(x: self.frame.midX,
-                                     y: self.frame.midY,
-                                     width: self.frame.width/2,
-                                     height: self.frame.height/2)
-            
-            self.addSubview(imageView)
-            
-            imageView.anchor(top: self.topAnchor,
-                             leading: self.leadingAnchor,
-                             bottom: self.bottomAnchor,
-                             trailing: self.trailingAnchor,
-                             padding: UIEdgeInsets(top: self.frame.height/4,
-                                                   left: self.frame.width/4,
-                                                   bottom: self.frame.height/4,
-                                                   right: self.frame.width/4))
-            
         }
         
         self.delegate?.checkGameStatus(player: playerData.0)
-        
     }
     
 }
