@@ -17,7 +17,7 @@ extension UIImage {
     
 }
 
-extension Optional where Wrapped == UIImage {
+extension Optional where Wrapped: UIImage {
     
     func editable() -> UIImage {
         guard let image = self else { return UIImage() }

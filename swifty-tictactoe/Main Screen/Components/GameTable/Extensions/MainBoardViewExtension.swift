@@ -28,7 +28,7 @@ extension MainBoardView: BoardCellDelegate {
     
     }
     
-    func checkGameStatus(player: PlayerTypeEnum) {
+    func checkWinner(player: PlayerTypeEnum) -> Bool {
         
         let indices = self.board.indices.filter { self.board[$0].1 == player }
         
@@ -37,45 +37,59 @@ extension MainBoardView: BoardCellDelegate {
             let containedElements = indices.contained(elements: possibility)
             
             if indices.count > 2 && containedElements.count > 2 {
-                
                 possibility.forEach {
                     self.board[$0].0.imageView.tintColor = UIColor.green
                 }
                 
                 gameOver()
                 
-                break
+                return true
             }
             
         }
         
-        let placesLeftToPlay = self.board.reduce(0) { $1.1 == .none ? $0 + 1 : $0 }
-        
-        if placesLeftToPlay == 0 {
+        if freeSpotsAmount() == 0 {
             gameOver()
         }
+        return false
         
     }
     
-    private func gameOver() {
-        
+    private func gameOver(isGameTied: Bool = false) {
         self.blockView(with: self.blockageView)
-        
     }
     
     func computerTurn() {
 
-        let freePos = self.board.filter { $0.1 == .none }
+        let everyFreeSpot = freeSpots()
         
-        guard let nextPos = freePos.first else { return }
+        guard let nextPos = everyFreeSpot.first else { return }
         
         let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: .computer)
+        
         if boardUpdated {
             nextPos.0.imageView = UIImageView(image: UIImage(named: "cross").editable())
         }
         
-        self.checkGameStatus(player: .computer)
+        if self.checkWinner(player: .computer) { /* to do*/ }
 
     }
     
+    func minimax(board: [(BoardCellView, PlayerTypeEnum)]) {
+        let availableSpots = freeSpots()
+        
+        
+        
+    }
+    
+}
+
+extension MainBoardView {
+    private func freeSpots() -> [(BoardCellView, PlayerTypeEnum)] {
+        return self.board.filter { $0.1 == .none }
+    }
+    
+    private func freeSpotsAmount() -> Int {
+        return self.board.reduce(0) { $1.1 == .none ? $0 + 1 : $0 }
+    }
 }
