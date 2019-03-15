@@ -42,7 +42,7 @@ extension MainBoardView: BoardCellDelegate {
                     self.board[$0].0.imageView.tintColor = UIColor.green
                 }
                 
-                self.blockView(with: self.blockageView)
+                gameOver()
                 
                 break
             }
@@ -66,7 +66,7 @@ extension MainBoardView: BoardCellDelegate {
     func computerTurn() {
         
         self.blockView(with: self.blockageView)
-        
+
         let freePos = self.board.filter { $0.1 == .none }
         
         guard let nextPos = freePos.first else { return }

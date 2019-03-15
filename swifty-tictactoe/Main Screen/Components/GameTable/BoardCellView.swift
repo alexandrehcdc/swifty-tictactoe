@@ -65,7 +65,7 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
             imageView = UIImageView(image: playerData.1.withRenderingMode(.alwaysTemplate))
         }
         
-        self.delegate?.checkGameStatus(player: playerData.0)
+        self.delegate?.checkGameStatus(player: .player)
         
         self.delegate?.computerTurn()
     }

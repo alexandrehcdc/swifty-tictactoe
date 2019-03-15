@@ -15,7 +15,6 @@ class MainBoardView: UIView {
     var viewPositions = [(CGFloat, CGFloat)]()
     var board         = [(BoardCellView, PlayerTypeEnum)]()
     
-    var currentPlayer: PlayerTypeEnum = .player
     var playerPickedImage: UIImage?
     var computerPickedImage: UIImage?
     
