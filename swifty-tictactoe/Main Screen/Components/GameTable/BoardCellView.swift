@@ -63,7 +63,7 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         let isBoardUpdated = delegate.updateBoard(squareId: self.id, player: .player)
         
         if isBoardUpdated {
-            imageView = UIImageView(image: playerData.1.withRenderingMode(.alwaysTemplate))
+            imageView = UIImageView(image: playerData.1.editable)
         }
         
         if delegate.checkWinner(player: .player) { /* to do */  }

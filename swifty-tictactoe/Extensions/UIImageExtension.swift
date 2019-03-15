@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIImage {
+    var editable: UIImage {
+        return self.withRenderingMode(.alwaysTemplate)
+    }
     
     struct assets {
         static let cross  = UIImage(named: "cross"),
@@ -18,10 +21,7 @@ extension UIImage {
 }
 
 extension Optional where Wrapped: UIImage {
-    
-    func editable() -> UIImage {
-        guard let image = self else { return UIImage() }
-        return image.withRenderingMode(.alwaysTemplate)
+    var editable: UIImage {
+        return self?.withRenderingMode(.alwaysTemplate) ?? UIImage()
     }
-    
 }
