@@ -12,4 +12,5 @@ protocol BoardCellDelegate: class {
     func updateBoard(squareId: Int, player: PlayerTypeEnum) -> Bool
     func getPlayerData() -> (PlayerTypeEnum, UIImage)
     func checkGameStatus(player: PlayerTypeEnum)
+    func computerTurn()
 }

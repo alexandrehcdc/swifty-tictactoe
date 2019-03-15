@@ -20,24 +20,12 @@ extension MainBoardView: BoardCellDelegate {
     
     func getPlayerData() -> (PlayerTypeEnum, UIImage) {
         
-        guard let aiPickedImage     = self.computerPickedImage,
-              let playerPickedImage = self.playerPickedImage else {
-                return (self.currentPlayer, UIImage())
+        guard let playerPickedImage = self.playerPickedImage else {
+            return (.player, UIImage())
         }
-        
-        switch self.currentPlayer {
-            case .computer:
-                let player = self.currentPlayer
-                self.currentPlayer = .player
-                return (player, aiPickedImage)
-            case .player:
-                let player = self.currentPlayer
-                self.currentPlayer = .computer
-                return (player, playerPickedImage)
-            default:
-                return (self.currentPlayer, UIImage())
-        }
-        
+
+        return (.player, playerPickedImage)
+    
     }
     
     func checkGameStatus(player: PlayerTypeEnum) {
@@ -65,33 +53,33 @@ extension MainBoardView: BoardCellDelegate {
         
         if placesLeftToPlay == 0 {
             gameOver()
-        } else {
-            aiTurn()
         }
         
     }
     
-    func gameOver() {
+    private func gameOver() {
         
         self.blockView(with: self.blockageView)
         
     }
     
-    func aiTurn() {
+    func computerTurn() {
         
         self.blockView(with: self.blockageView)
-        
-        self.currentPlayer = .computer
         
         let freePos = self.board.filter { $0.1 == .none }
         
         guard let nextPos = freePos.first else { return }
         
-        let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: nextPos.1)
+        let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: .computer)
         
         if boardUpdated {
             nextPos.0.imageView = UIImageView(image: UIImage(named: "cross")!.withRenderingMode(.alwaysTemplate))
         }
+        
+        self.releaseView(with: self.blockageView)
+        
+        self.checkGameStatus(player: .computer)
         
     }
     

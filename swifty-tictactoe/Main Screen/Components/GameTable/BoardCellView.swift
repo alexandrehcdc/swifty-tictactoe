@@ -59,13 +59,15 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
         if self.imageView.isDescendant(of: self) { return }
         
         guard let playerData     = self.delegate?.getPlayerData() else { return }
-        guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: playerData.0) else { return }
+        guard let isBoardUpdated = self.delegate?.updateBoard(squareId: self.id, player: .player) else { return }
         
         if isBoardUpdated {
             imageView = UIImageView(image: playerData.1.withRenderingMode(.alwaysTemplate))
         }
         
         self.delegate?.checkGameStatus(player: playerData.0)
+        
+        self.delegate?.computerTurn()
     }
     
 }
