@@ -28,7 +28,7 @@ extension MainBoardView: BoardCellDelegate {
     
     }
     
-    func checkWinner(player: PlayerTypeEnum) -> Bool {
+    func checkWinner(player: PlayerTypeEnum) -> (PlayerTypeEnum, Bool) {
         
         let indices = self.board.indices.filter { self.board[$0].1 == player }
         
@@ -37,30 +37,35 @@ extension MainBoardView: BoardCellDelegate {
             let containedElements = indices.contained(elements: possibility)
             
             if indices.count > 2 && containedElements.count > 2 {
-                possibility.forEach {
-                    self.board[$0].0.imageView.tintColor = UIColor.green
+                for index in possibility {
+                    self.board[index].0.imageView.tintColor = UIColor.green
                 }
                 
-                gameOver()
+                gameOver(player: (player, true))
                 
-                return true
+                return (player, true)
             }
             
         }
         
         if freeSpotsAmount() == 0 {
-            gameOver()
+            gameOver(player: (.none,true))
+            return (.none, true)
         }
-        return false
+        return (.none, false)
         
     }
     
-    private func gameOver(isGameTied: Bool = false) {
-        self.blockView(with: self.blockageView)
+    func gameOver(player: (PlayerTypeEnum, Bool)) {
+        let playerType = player.0
+        let status     = player.1
+        
+        if status {
+            self.blockView(with: self.blockageView)
+        }
     }
     
     func computerTurn() {
-    
         guard let nextPos = freeSpots().first else { return }
         
         let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: .computer)
@@ -69,8 +74,9 @@ extension MainBoardView: BoardCellDelegate {
             nextPos.0.imageView = UIImageView(image: UIImage(named: "cross").editable)
         }
         
-        if self.checkWinner(player: .computer) { /* to do*/ }
-
+        let gameStatus = self.checkWinner(player: .computer)
+        
+        self.gameOver(player: gameStatus)
     }
     
     func minimax(board: [(BoardCellView, PlayerTypeEnum)]) {

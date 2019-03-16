@@ -66,9 +66,14 @@ class BoardCellView: UIView, UIGestureRecognizerDelegate {
             imageView = UIImageView(image: playerData.1.editable)
         }
         
-        if delegate.checkWinner(player: .player) { /* to do */  }
+        let possibleWinner = delegate.checkWinner(player: playerData.0)
         
-        self.delegate?.computerTurn()
+        if possibleWinner.1 {
+            self.delegate?.gameOver(player: possibleWinner)
+        } else {
+            self.delegate?.computerTurn()
+        }
+        
     }
     
 }
