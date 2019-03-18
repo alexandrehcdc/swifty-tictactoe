@@ -69,7 +69,7 @@ extension MainBoardView: BoardCellDelegate {
         guard let nextPos = freeSpots().first else { return }
         
         let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: .computer)
-        
+
         if boardUpdated {
             nextPos.0.imageView = UIImageView(image: UIImage(named: "cross").editable)
         }
@@ -79,10 +79,47 @@ extension MainBoardView: BoardCellDelegate {
         self.gameOver(player: gameStatus)
     }
     
-    func minimax(board: [(BoardCellView, PlayerTypeEnum)]) {
+    func minimax(board: [(BoardCellView, PlayerTypeEnum)], player: PlayerTypeEnum) -> Int {
         let availableSpots = freeSpots()
+        var moves          = [BoardStruct]()
+        var bestMove: Int?
         
+        if checkWinner(player: .player).1 {
+            return -1
+        } else if checkWinner(player: .computer).1 {
+            return 1
+        } else if availableSpots.isEmpty {
+            return 0
+        }
         
+        for (index, _) in availableSpots.enumerated() {
+            var move = BoardStruct(index: 0, score: 0)
+//            board[availableSpots[index].0.id].1 = player
+            
+            if player == .computer {
+                move = BoardStruct(index: index, score: minimax(board: board, player: .player))
+            } else {
+                move = BoardStruct(index: index, score: minimax(board: board, player: .computer))
+            }
+            
+            moves.append(move)
+            
+        }
+        
+        bestMove = moves.first?.index
+        
+        if player == .computer {
+            for index in 0...moves.count {
+                guard let move = bestMove else { return 1000 }
+                if moves[index].score > move {
+                    bestMove = index
+                }
+            }
+        } else {
+            
+        }
+        
+        return 0
     }
     
 }

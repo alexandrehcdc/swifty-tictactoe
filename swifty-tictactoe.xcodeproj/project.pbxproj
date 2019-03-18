@@ -15,6 +15,7 @@
 		45D701D9223419A100187CC0 /* BezierPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701D8223419A100187CC0 /* BezierPathExtension.swift */; };
 		45D701DF223A606B00187CC0 /* MainBoardViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701DE223A606B00187CC0 /* MainBoardViewExtension.swift */; };
 		45D701E1223A658900187CC0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701E0223A658900187CC0 /* UIViewExtension.swift */; };
+		45D701E3223F3C0300187CC0 /* BoardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701E2223F3C0300187CC0 /* BoardStruct.swift */; };
 		514BB5682232ECBE0006E380 /* PlayerTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514BB5672232ECBE0006E380 /* PlayerTypeEnum.swift */; };
 		514BB56C2232F9E70006E380 /* BoardCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514BB56B2232F9E70006E380 /* BoardCellDelegate.swift */; };
 		51D9B42E2238196700932D0D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9B42D2238196700932D0D /* UIImageExtension.swift */; };
@@ -53,6 +54,7 @@
 		45D701D8223419A100187CC0 /* BezierPathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtension.swift; sourceTree = "<group>"; };
 		45D701DE223A606B00187CC0 /* MainBoardViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardViewExtension.swift; sourceTree = "<group>"; };
 		45D701E0223A658900187CC0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		45D701E2223F3C0300187CC0 /* BoardStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStruct.swift; sourceTree = "<group>"; };
 		514BB5672232ECBE0006E380 /* PlayerTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTypeEnum.swift; sourceTree = "<group>"; };
 		514BB56B2232F9E70006E380 /* BoardCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellDelegate.swift; sourceTree = "<group>"; };
 		51D9B42D2238196700932D0D /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				514BB5672232ECBE0006E380 /* PlayerTypeEnum.swift */,
 				514BB56B2232F9E70006E380 /* BoardCellDelegate.swift */,
 				45D701D32234052C00187CC0 /* MainBoardDelegate.swift */,
+				45D701E2223F3C0300187CC0 /* BoardStruct.swift */,
 			);
 			path = GameTable;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				51EBA723221E077700A3F951 /* UIViewLayoutExtension.swift in Sources */,
 				45CBE34E222785A700EE6355 /* MainScreenButtonsStackView.swift in Sources */,
 				45D701D9223419A100187CC0 /* BezierPathExtension.swift in Sources */,
+				45D701E3223F3C0300187CC0 /* BoardStruct.swift in Sources */,
 				514BB5682232ECBE0006E380 /* PlayerTypeEnum.swift in Sources */,
 				51D9B42E2238196700932D0D /* UIImageExtension.swift in Sources */,
 				514BB56C2232F9E70006E380 /* BoardCellDelegate.swift in Sources */,

@@ -56,7 +56,6 @@ class MainBoardView: UIView {
     func startGame() {
         
         for (index, element) in self.viewPositions.enumerated() {
-            
             let newView = BoardCellView(frame: CGRect(x: element.0,
                                                       y: element.1,
                                                       width: (self.frame.width/3)-2,
