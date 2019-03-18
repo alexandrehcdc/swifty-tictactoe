@@ -66,12 +66,12 @@ extension MainBoardView: BoardCellDelegate {
     }
     
     func computerTurn() {
-        guard let nextPos = freeSpots().first else { return }
+        let nextPos = minimax(board: self.board, player: .computer)
         
-        let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: .computer)
+        let boardUpdated = self.updateBoard(squareId: nextPos, player: .computer)
 
         if boardUpdated {
-            nextPos.0.imageView = UIImageView(image: UIImage(named: "cross").editable)
+            self.board[nextPos].0.imageView = UIImageView(image: UIImage(named: "cross").editable)
         }
         
         let gameStatus = self.checkWinner(player: .computer)
@@ -81,6 +81,7 @@ extension MainBoardView: BoardCellDelegate {
     
     func minimax(board: [(BoardCellView, PlayerTypeEnum)], player: PlayerTypeEnum) -> Int {
         let availableSpots = freeSpots()
+        var newBoard       = board
         var moves          = [BoardStruct]()
         var bestMove: Int?
         
@@ -94,16 +95,16 @@ extension MainBoardView: BoardCellDelegate {
         
         for (index, _) in availableSpots.enumerated() {
             var move = BoardStruct(index: 0, score: 0)
-//            board[availableSpots[index].0.id].1 = player
+            
+            newBoard[availableSpots[index].0.id].1 = player
             
             if player == .computer {
-                move = BoardStruct(index: index, score: minimax(board: board, player: .player))
+                move = BoardStruct(index: index, score: minimax(board: newBoard, player: .player))
             } else {
                 move = BoardStruct(index: index, score: minimax(board: board, player: .computer))
             }
             
             moves.append(move)
-            
         }
         
         bestMove = moves.first?.index
@@ -116,10 +117,15 @@ extension MainBoardView: BoardCellDelegate {
                 }
             }
         } else {
-            
+            for index in 0...moves.count {
+                guard let move = bestMove else { return 1000 }
+                if moves[index].score < move {
+                    bestMove = index
+                }
+            }
         }
         
-        return 0
+        return bestMove ?? -100
     }
     
 }
