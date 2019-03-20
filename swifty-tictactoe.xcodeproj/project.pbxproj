@@ -16,6 +16,7 @@
 		45D701DF223A606B00187CC0 /* MainBoardViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701DE223A606B00187CC0 /* MainBoardViewExtension.swift */; };
 		45D701E1223A658900187CC0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701E0223A658900187CC0 /* UIViewExtension.swift */; };
 		45D701E3223F3C0300187CC0 /* BoardStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701E2223F3C0300187CC0 /* BoardStruct.swift */; };
+		45D701E62241DE6F00187CC0 /* BoardCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D701E52241DE6F00187CC0 /* BoardCommonButton.swift */; };
 		514BB5682232ECBE0006E380 /* PlayerTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514BB5672232ECBE0006E380 /* PlayerTypeEnum.swift */; };
 		514BB56C2232F9E70006E380 /* BoardCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514BB56B2232F9E70006E380 /* BoardCellDelegate.swift */; };
 		51D9B42E2238196700932D0D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9B42D2238196700932D0D /* UIImageExtension.swift */; };
@@ -55,6 +56,7 @@
 		45D701DE223A606B00187CC0 /* MainBoardViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBoardViewExtension.swift; sourceTree = "<group>"; };
 		45D701E0223A658900187CC0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		45D701E2223F3C0300187CC0 /* BoardStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStruct.swift; sourceTree = "<group>"; };
+		45D701E52241DE6F00187CC0 /* BoardCommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCommonButton.swift; sourceTree = "<group>"; };
 		514BB5672232ECBE0006E380 /* PlayerTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTypeEnum.swift; sourceTree = "<group>"; };
 		514BB56B2232F9E70006E380 /* BoardCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellDelegate.swift; sourceTree = "<group>"; };
 		51D9B42D2238196700932D0D /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -101,13 +103,13 @@
 		45CBE34C2227857C00EE6355 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				45D701CA2230A19F00187CC0 /* GameTable */,
-				45CBE34D222785A700EE6355 /* MainScreenButtonsStackView.swift */,
+				45D701E42241DE5800187CC0 /* Board Buttons */,
+				45D701CA2230A19F00187CC0 /* Game Table */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		45D701CA2230A19F00187CC0 /* GameTable */ = {
+		45D701CA2230A19F00187CC0 /* Game Table */ = {
 			isa = PBXGroup;
 			children = (
 				45D701DD223A605600187CC0 /* Extensions */,
@@ -118,7 +120,7 @@
 				45D701D32234052C00187CC0 /* MainBoardDelegate.swift */,
 				45D701E2223F3C0300187CC0 /* BoardStruct.swift */,
 			);
-			path = GameTable;
+			path = "Game Table";
 			sourceTree = "<group>";
 		};
 		45D701DD223A605600187CC0 /* Extensions */ = {
@@ -127,6 +129,15 @@
 				45D701DE223A606B00187CC0 /* MainBoardViewExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		45D701E42241DE5800187CC0 /* Board Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				45CBE34D222785A700EE6355 /* MainScreenButtonsStackView.swift */,
+				45D701E52241DE6F00187CC0 /* BoardCommonButton.swift */,
+			);
+			path = "Board Buttons";
 			sourceTree = "<group>";
 		};
 		51EBA6DB221DF12000A3F951 = {
@@ -334,6 +345,7 @@
 				45D701D22233EFE900187CC0 /* ArrayExtensions.swift in Sources */,
 				45D701D42234052C00187CC0 /* MainBoardDelegate.swift in Sources */,
 				51EBA6E8221DF12000A3F951 /* AppDelegate.swift in Sources */,
+				45D701E62241DE6F00187CC0 /* BoardCommonButton.swift in Sources */,
 				45D701CF2230C2CB00187CC0 /* BoardCellView.swift in Sources */,
 				45D701E1223A658900187CC0 /* UIViewExtension.swift in Sources */,
 				51EBA723221E077700A3F951 /* UIViewLayoutExtension.swift in Sources */,

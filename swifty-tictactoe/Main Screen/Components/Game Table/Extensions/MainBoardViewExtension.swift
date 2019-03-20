@@ -95,6 +95,7 @@ extension MainBoardView: BoardCellDelegate {
         
         for (index, _) in availableSpots.enumerated() {
             var move = BoardStruct(index: 0, score: 0)
+            let cellToMove = availableSpots[index].0.id
             
             newBoard[availableSpots[index].0.id].1 = player
             

@@ -21,6 +21,14 @@ class MainGameScreenViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         
         loadElements()
+        
+        let stackView = MainScreenButtonsStackView()
+        self.view.addSubview(stackView)
+        
+        stackView.anchor(top: nil, leading: nil, bottom: self.view.bottomAnchor, trailing: nil, padding: UIEdgeInsets(top: 0,
+                                                                                                                 left: 0,
+                                                                                                                 bottom: 10,
+                                                                                                                 right: 0))
     }
     
     func loadElements() {
