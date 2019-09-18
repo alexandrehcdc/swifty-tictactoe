@@ -66,12 +66,14 @@ extension MainBoardView: BoardCellDelegate {
     }
     
     func computerTurn() {
-        let nextPos = minimax(board: self.board, player: .computer)
+//        let nextPos = minimax(board: self.board, player: .computer)
         
-        let boardUpdated = self.updateBoard(squareId: nextPos, player: .computer)
+        guard let nextPos = self.freeSpots().first else { return }
+        
+        let boardUpdated = self.updateBoard(squareId: nextPos.0.id, player: .computer)
 
         if boardUpdated {
-            self.board[nextPos].0.imageView = UIImageView(image: UIImage(named: "cross").editable)
+            self.board[nextPos.0.id].0.imageView = UIImageView(image: UIImage(named: "cross").editable)
         }
         
         let gameStatus = self.checkWinner(player: .computer)

@@ -11,8 +11,9 @@ import UIKit
 class MainGameScreenViewController: UIViewController {
     
     var screenTitle: UILabel?
-    
+
     var gameBoard = MainBoardView()
+    let stackView = MainScreenButtonsStackView()
 
     override func viewDidLoad() {
         
@@ -22,13 +23,12 @@ class MainGameScreenViewController: UIViewController {
         
         loadElements()
         
-        let stackView = MainScreenButtonsStackView()
-        self.view.addSubview(stackView)
+        self.view.addSubview(self.stackView)
         
-        stackView.anchor(top: nil, leading: nil, bottom: self.view.bottomAnchor, trailing: nil, padding: UIEdgeInsets(top: 0,
-                                                                                                                 left: 0,
-                                                                                                                 bottom: 10,
-                                                                                                                 right: 0))
+//        stackView.anchor(top: self.view.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 0,
+//                                                                                                                   left: 0,
+//                                                                                                                   bottom: 10,
+//                                                                                                                   right: 0))
     }
     
     func loadElements() {
